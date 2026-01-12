@@ -4,9 +4,10 @@ import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
 import { UserModule } from './user/user.module';
 import { MongooseModule } from '@nestjs/mongoose';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
-  imports: [AuthModule, UserModule, MongooseModule.forRoot('mongodb+srv://abhimanyukr399:bGVypU0463oUgmfj@firecluster.r4jsl.mongodb.net/')],
+  imports: [ConfigModule.forRoot(),AuthModule, UserModule, MongooseModule.forRoot(process.env.MONGO_URL as string)],
   controllers: [AppController],
   providers: [AppService],
 })

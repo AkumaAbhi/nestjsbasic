@@ -6,16 +6,18 @@ export type CatDocument = HydratedDocument<User>;
 
 @Schema()
 export class User {
-    @Prop()
+    @Prop({required : true})
      name : String
 
-    @Prop()
+    @Prop({required : true})
     email : String
     
-    @Prop()
+    @Prop({required : true})
     password : String
 
-    @Prop()
+    @Prop({required : true,
+        default : "student"
+    })
     role : string
 }
 
